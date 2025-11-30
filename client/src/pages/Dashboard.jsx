@@ -10,7 +10,7 @@ const Dashboard = () => {
 
   const fetchShifts = async () => {
     try {
-      const res = await axios.get('http://localhost:5001/api/shifts', {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/shifts`, {
         headers: { Authorization: `Bearer ${user.token}` }
       });
       setShifts(res.data);

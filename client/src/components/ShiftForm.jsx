@@ -15,7 +15,7 @@ const ShiftForm = ({ onShiftAdded }) => {
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
-        const res = await axios.get('http://localhost:5001/api/employees', {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/employees`, {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         setEmployees(res.data);
@@ -32,7 +32,7 @@ const ShiftForm = ({ onShiftAdded }) => {
     setError('');
     setSuccess(false);
     try {
-      await axios.post('http://localhost:5001/api/shifts', 
+      await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/shifts`, 
         { employeeId, date, startTime, endTime },
         { headers: { Authorization: `Bearer ${user.token}` } }
       );
